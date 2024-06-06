@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Superstore</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="images/logo.png">
+                    <h2>Super<span class="danger">Store</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar" id="sidebar">
+                <a href="#Dashboard" class="active">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Dashboard <span class="trik-darurat">assssssssssssssssssssssssssssd</span></h3>
+                </a>
+                <a href="#Insight" >
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Insights</h3>
+                </a>
+                <a href="#rekomendasi">
+                    <span class="material-icons-sharp">
+                        recommend
+                    </span>
+                    <h3>Recom</h3>
+                </a>
+                <a href="#kontribusi">
+                    <span class="material-icons-sharp">
+                        groups
+                    </span>
+                    <h3>Contribute</h3>
+                </a>         
+                
+                
+                
+                <a href="#laporkan">
+                    <span class="material-icons-sharp">
+                        report_gmailerrorred
+                    </span>
+                    <h3>Reports</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <h1 id="Dashboard">Dashboard</h1>
+            <!-- Analyses -->
+            <div class="option-container">
+                <div>
+                    <select id="stateSelect" onchange="updateChart()">
+                        <option value="">All State</option>
+                        <option value="California">California</option>
+                        <option value="Washington">Washington</option>
+                        <option value="Virginia">Virginia</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Texas">Texas</option>
+                    </select>
+                    <select id="yearFilter" onchange="updateChart()">
+                        <option value="">All Year</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                    </select>
+                </div>
+            </div>
+            <div class="analyse">
+                <div class="sales">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Total Profit</h3>
+                            <h1 id="Card-1"></h1>
+                        </div>
+                        <span class="material-icons-sharp" id="profit">
+                            paid
+                        </span>
+                    </div>
+                </div>
+                <div class="visits">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Total Sales</h3>
+                            <h1 id="Card-2"></h1>
+                        </div>
+                        <span class="material-icons-sharp" id="sales">
+                            sell
+                        </span>
+                    </div>
+                </div>
+                <div class="searches">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Quantity</h3>
+                            <h1 id="Card-3"></h1>
+                        </div>
+                        <span class="material-icons-sharp" id="quantity">
+                            inventory_2
+                        </span>
+                    </div>
+                </div>
+                <div class="searches">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Order Id</h3>
+                            <h1 id="Card-4"></h1>
+                        </div>
+                        <span class="material-icons-sharp" id="Order">
+                            person
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- baris chart 1 -->
+            <div class="analyze">
+                <div class="Profit">
+                    <div class="status">
+                        <canvas id="myChart-1"></canvas>
+                    </div>
+                </div>
+                <div class="Quantity">
+                    <div class="status">
+                        <canvas id="myChart-2"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- baris chart 2 -->
+            <div class="analyze1">
+                <div class="sales">
+                    <div class="status">
+                        <canvas id="myChart-3"></canvas>
+                    </div>
+                </div>
+                <div class="profit-category">
+                    <div class="status">
+                        <canvas id="myChart-6"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- baris chart 3 -->
+            <div class="analyze2">
+                <div class="category">
+                    <div class="status">
+                        <canvas id="myChart-5"></canvas>
+                    </div>
+                </div>
+                <div class="Discount-scatter">
+                    <div class="status">
+                        <canvas id="myChart-4"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- baris chart 4 -->
+            <div class="analyze3">
+                <div class="sales">
+                    <div class="status">
+                        <canvas id="myChart-7"></canvas>
+                    </div>
+                </div>
+                <div class="Discount">
+                    <div class="status">
+                        <canvas id="myChart-8"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#" id="show-all-btn">Show All</a>
+            <!-- End of Analyses -->
+
+            <!-- Insights -->
+            <div class="header-insight" id="Insight">
+                <h2>Insights</h2>
+                <span class="material-icons-sharp">
+                    insights
+                </span>
+            </div>
+            <div class="insights">
+                <div class="searches">
+                  <div class="status">
+                    <div class="info">
+                      <h3>
+                        Texas experienced a surge in orders and sales from 2014-2017, reaching a peak in 2017.
+                    </h3>
+                      <h1 id="Card-4"></h1>
+                    </div>
+                    <span class="material-symbols-outlined" id="Order">
+                      lightbulb
+                    </span>
+                  </div>
+                </div>
+                <div class="searches">
+                  <div class="status">
+                    <div class="info">
+                      <h3>
+                        Texas sales dipped in 2014-2015, rebounded in 2016, and grew slightly in 2017. Tech sales peaked in 2015, furniture sales rose steadily.
+                    </h3>
+                      <h1 id="Card-4"></h1>
+                    </div>
+                    <span class="material-symbols-outlined" id="Order">
+                      lightbulb
+                    </span>
+                  </div>
+                </div>
+                <div class="searches hidden">  <div class="status">
+                    <div class="info">
+                      <h3>
+                        
+                        Technology was profitable in 2014-2017, furniture was up and down, office supplies plummeted in 2016-2017.  
+                    </h3>
+                      <h1 id="Card-4"></h1>
+                    </div>
+                    <span class="material-symbols-outlined" id="Order">
+                      lightbulb
+                    </span>
+                  </div>
+                </div>
+                <div class="searches hidden">  <div class="status">
+                    <div class="info">
+                      <h3>Texas experienced losses (negative profit) consistently for 4 consecutive years from 2014 to 2017.
+                    </h3>
+                      <h1 id="Card-4"></h1>
+                    </div>
+                    <span class="material-symbols-outlined" id="Order">
+                      lightbulb
+                    </span>
+                  </div>
+                </div>
+                <div class="searches hidden">  <div class="status">
+                    <div class="info">
+                      <h3>
+                        Biggest loss in 2014: $58,514,576, the highest across all states and years.
+                    </h3>
+                      <h1 id="Card-4"></h1>
+                    </div>
+                    <span class="material-symbols-outlined" id="Order">
+                      lightbulb
+                    </span>
+                  </div>
+                </div>
+                <div class="searches hidden">  <div class="status">
+                    <div class="info">
+                      <h3>Texas suffered notable losses in subsequent years despite a gradual decline, totaling:
+                        - 2015: $27,030,143
+                        - 2016: $43,631,005
+                        - 2017: $31,874,895
+                     </h3>
+                      <h1 id="Card-4"></h1>
+                    </div>
+                    <span class="material-symbols-outlined" id="Order">
+                      lightbulb
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <a id="show-more-btn">Show All</a>
+            <!-- Insights End -->
+
+            <!-- Recommendations -->
+            <div class="header-recommendations" id="rekomendasi">
+                <h2 >Recommendations</h2>
+                <span class="material-symbols-outlined">
+                    recommend
+                    </span>
+            </div>
+            <div class="recommendations">
+                <div class="searches1">
+                  <div class="status">
+                    <div class="info">
+                      <h3>Focus more intensive marketing and sales strategies in Texas given the significant growth there.</h3>
+                      <h1 id="Card-4"></h1>
+                    </div>
+                    <span class="material-symbols-outlined">
+                        bookmark_star
+                        </span>
+                  </div>
+                </div>
+                <div class="searches1">
+                  <div class="status">
+                    <div class="info">
+                      <h3>Invest more resources in technology categories that show good and stable performance.</h3>
+                      <h1 id="Card-4"></h1>
+                    </div>
+                    <span class="material-symbols-outlined">
+                        bookmark_star
+                        </span>
+                  </div>
+                </div>
+                <div class="searcheshidden1">  
+                    <div class="status">
+                    <div class="info">
+                      <h3>Reevaluate the strategy for the office furniture and supplies category, and look for ways to increase profits or reduce fluctuations.</h3>
+                      <h1 id="Card-4"></h1>
+                    </div>
+                    <span class="material-symbols-outlined">
+                        bookmark_star
+                        </span>
+                  </div>
+                </div>
+                <div class="searcheshidden1">  
+                    <div class="status">
+                    <div class="info">
+                      <h3>Improve marketing and promotional efforts. By conducting market research to understand current consumer preferences and trends in Texas.
+                    </h3>
+                      <h1 id="Card-4"></h1>
+                    </div>
+                    <span class="material-symbols-outlined">
+                        bookmark_star
+                        </span>
+                  </div>
+                </div>
+                <div class="searcheshidden1">  
+                    <div class="status">
+                    <div class="info">
+                      <h3>Consider competitive pricing strategies. Analyze product/service pricing compared to competitors in the Texas market.</h3>
+                      <h1 id="Card-4"></h1>
+                    </div>
+                    <span class="material-symbols-outlined">
+                        bookmark_star
+                        </span>
+                  </div>
+                </div>
+                <div class="searcheshidden1">  
+                    <div class="status">
+                    <div class="info">
+                      <h3>....................</h3>
+                      <h1 id="Card-4"></h1>
+                    </div>
+                    <span class="material-symbols-outlined">
+                        bookmark_star
+                        </span>
+                  </div>
+                </div>
+              </div>
+              <a id="Show-more-btn">Show All</a>
+            <!-- Recommendations end-->
+
+            <!-- Contribute -->
+            <div class="contribute" id="kontribusi">
+                <h2>Contribute</h2>
+                <div class="profil-list">
+                    <div class="profil">
+                        <img src="/images/billa.png">
+                        <h2>Nabilla</h2>
+                        <p>STMIK KAPUTAMA<br>
+                        Project<br>
+                    Leader</p>
+                    </div>
+                    <div class="profil">
+                        <img src="/images/shita.jpg">
+                        <h2>Shita</h2>
+                        <p>Univ Negeri Surabaya<br>
+                        Data Communicator<br>
+                    Quality Assurance</p>
+                    </div>
+                    <div class="profil">
+                        <img src="/images/Nidea rinzenj.JPG">
+                        <h2>Zeni</h2>
+                        <p>Univ Malikussaleh
+                            <br>
+                        Data Cleaner<br>
+                    Pitch Deck</p>
+                    </div>       
+                    <div class="profil">
+                        <img src="/images/Artha.jpg">
+                        <h2>Artha</h2>
+                        <p>Institut Pertanian Bogor
+                            <br>
+                        Data Cleaner<br>
+                    Frontend</p>
+                    </div>
+                    <div class="profil">
+                        <img src="/images/Wawan.jpg">
+                        <h2>Kurniawan</h2>
+                        <p>Universitas Khairun<br>
+                        Data Cleaner<br>
+                    Frontend</p>
+                    </div>
+                    <div class="profil">
+                        <img src="/images/Fillah.jpeg">
+                        <h2>Fillah</h2>
+                        <p>Univ Negeri Yogyakarta
+                            <br>
+                        Data Analyser<br>
+                    Deployment</p>
+                    </div>
+                    <div class="profil">
+                        <img src="/images/firman (2).jpeg">
+                        <h2>Firman</h2>
+                        <p>Univ Mercubuana<br>
+                            Yogyakarta<br>
+                        Data Visualizer<br>
+                    Frontend</p>
+                    </div>
+                    <div class="profil">
+                        <img src="/images/meira.PNG">
+                        <h2>Meira</h2>
+                        <p>Univ Widyatama<br>
+                            Bandung
+                            <br>
+                        Data Communicator<br>
+                    Pitch Deck</p>
+                    </div>          
+                    <div class="profil">
+                        <img src="/images/Suryani.jpg">
+                        <h2>Suryani</h2>
+                        <p>Univ Atma Jaya<br>
+                            Yogyakarta<br>
+                        Data Visualizer<br>
+                    Quality Assurance</p>
+                    </div>
+                    <div class="profil">
+                        <img src="/images/andi izra.jpg">
+                        <h2>Izra</h2>
+                        <p>Univ Muhammadiyah<br>
+                            Malang
+                            <br>
+                        Data Visualizer<br>
+                    Quality Assurance</p>
+                    </div>                  
+                    <div class="profil">
+                        <img src="/images/Arum.JPG">
+                        <h2>Arum</h2>
+                        <p>Univ Dian Nuswantoro<br>
+                            Semarang<br>
+                        Data Analyser<br>
+                    Pitch Deck</p>
+                    </div>
+                </div>
+            </div>
+            <!-- contribute end -->
+
+            <!-- Report End -->
+            <div class="header-recommendations" id="laporkan">
+                <h2 >Report</h2>
+                <span class="material-icons-sharp">
+                    report_gmailerrorred
+                </span>
+            </div>
+            <div class="reports">
+                <div class="report">
+                  <div class="status">
+                    <form id="report-form">
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Enter your message here"></textarea>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address">
+                        </div>
+            
+                        <button type="submit">Submit Report</button>
+                    </form>
+            
+                    <div id="message-sent" class="success-message hidden">
+                        Your report has been sent successfully!
+                    </div>
+                </div>
+            </div>
+            <!-- Report End -->
+
+        </main>
+        <!-- End of Main Content -->
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">
+                        menu
+                    </span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">
+                        light_mode
+                    </span>
+                    <span class="material-icons-sharp">
+                        dark_mode
+                    </span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p>Medan <b>Team-16</b></p>
+                        <small class="text-muted">RevoU</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="/images/Logo-RevoU-5.png">
+                    </div>
+                </div>
+
+            </div>
+            <!-- End of Nav -->
+
+
+            <!-- banner -->
+            <div class="banner">
+                <div class="logo">
+                    <img src="images/logo.png">
+                    <h2>Superstore</h2>
+                    <p>Data Analytics</p>
+                </div>
+            </div>
+
+            <div class="banner-support">
+                <div class="header">
+                    <h2>Support</h2>
+                    <span class="material-icons-sharp">
+                        support
+                    </span>
+                </div>
+
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            <img src="/images/Logo-RevoU-5.png">
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <a href="https://revou.co/"><h3>RevoU</h3></a> 
+                            <small class="text_muted">
+                                Sponsor
+                            </small>
+                        </div>
+                        <span class="material-icons-sharp">
+                            verified
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            <img src="/images/kampus-merdeka.png">
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <a href="https://kampusmerdeka.kemdikbud.go.id/">
+                                <h3>Kampus Merdeka</h3>
+                            </a>
+                            <small class="text_muted">
+                                Sponsor
+                            </small>
+                        </div>
+                        <span class="material-icons-sharp">
+                            verified
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            <img src="/images/msib.png">
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <a href="https://kampusmerdeka.kemdikbud.go.id/program/studi-independen">
+                                <h3>MSIB</h3>
+                            </a>
+                            <small class="text_muted">
+                                Sponsor
+                            </small>
+                        </div>
+                        <span class="material-icons-sharp">
+                            verified
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner-support">
+                <div class="header">
+                    <h2>Technical Support</h2>
+                    <span class="material-icons-sharp">
+                        support
+                    </span>
+                </div>
+
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            <img src="/images/eric.jpg">
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <a href="https://www.linkedin.com/in/eric-timotius-tan/">
+                                <h3>Coach Eric</h3>
+                            </a>                            
+                            <small class="text_muted">
+                                Mentor Data Analyst Revou
+                            </small>
+                        </div>
+                        <span class="material-symbols-outlined">
+                            social_leaderboard
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            <img src="/images/rensa.png">
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <a href="https://www.linkedin.com/in/marindarensa/">
+                                <h3>Coach Rensa</h3>
+                            </a>
+                            <small class="text_muted">
+                                Mentor Software Engineering RevoU
+                            </small>
+                        </div>
+                        <span class="material-symbols-outlined">
+                            social_leaderboard
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            <img src="/images/chatgpt-logo_brandlogos.net_k2vew.png">
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <a href="https://chatgpt.com/?oai-dm=1">
+                                <h3>Chat GPT</h3>
+                            </a>                            
+                            <small class="text_muted">
+                                OpenAI
+                            </small>
+                        </div>
+                        <span class="material-symbols-outlined">
+                            social_leaderboard
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            <img src="/images/logo1.png">
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <a href="https://www.youtube.com/@AsmrProg"><h3>AsmrProg</h3></a>           
+                            <small class="text_muted">
+                                Channel Youtube
+                            </small>
+                        </div>
+                        <span class="material-symbols-outlined">
+                            social_leaderboard
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="index.js"></script>
+    <script src="myChart.js"></script>
+
+</body>
+
+</html>
