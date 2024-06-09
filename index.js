@@ -1,8 +1,8 @@
 const sideMenu = document.querySelector('aside');
 const menuBtn = document.getElementById('menu-btn');
 const closeBtn = document.getElementById('close-btn');
-
 const darkMode = document.querySelector('.dark-mode');
+const sidebarOptions = document.querySelectorAll('.sidebar');
 
 menuBtn.addEventListener('click', () => {
     sideMenu.style.display = 'block';
@@ -12,11 +12,22 @@ closeBtn.addEventListener('click', () => {
     sideMenu.style.display = 'none';
 });
 
+// Tambahkan event listener untuk setiap opsi di sidebar
+sidebarOptions.forEach(option => {
+    option.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            sideMenu.style.display = 'none';
+        }
+    });
+});
+
 darkMode.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode-variables');
     darkMode.querySelector('span:nth-child(1)').classList.toggle('active');
     darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
-})
+});
+
+
 
 const showAllBtn = document.getElementById('show-all-btn');
 const analyzeContainers = document.querySelectorAll('.analyze, .analyze1, .analyze2, .analyze3');
@@ -44,7 +55,6 @@ showMoreBtn.addEventListener('click', function() {
   }
 });
 
-
 const showoreBtn = document.getElementById('Show-more-btn');
 const iddenSearches = document.querySelectorAll('.searcheshidden1');
 
@@ -59,7 +69,6 @@ showoreBtn.addEventListener('click', function() {
     showoreBtn.textContent = 'Show All';
   }
 });
-
 
 const sidebarLinks = document.querySelectorAll('.sidebar a');
 
@@ -77,8 +86,6 @@ document.addEventListener("DOMContentLoaded", function() {
   sidebar.classList.add('show');
 });
 
-
-
 function sendEmail(message, email) {
   emailjs.send("service_surga", "template_neraka", {
       to_email: email,
@@ -91,35 +98,70 @@ function sendEmail(message, email) {
   });
 }
 
-const reportForm = document.getElementById('report-form');
-const messageInput = document.getElementById('message');
-const emailInput = document.getElementById('email');
-const successMessage = document.getElementById('message-sent');
+// Get the modal
+var modal = document.getElementById("infoModal");
 
-reportForm.addEventListener('submit', function(event) {
+// Get the button that opens the modal
+var btn = document.getElementById("infoIcon");
+
+// Get the <span> element that closes the modal
+var span = document.getElementById("closeModal");
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+function showPointer() {
+  var pointer = document.getElementById('pointer');
+  var aboutIcon = document.getElementById('About');
+
+  // Atur posisi pointer sesuai dengan posisi aboutIcon
+
+  // Tampilkan pointer
+  pointer.classList.remove('hidden');
+  pointer.style.opacity = '1';
+
+  // Sembunyikan pointer setelah 2 detik
+  setTimeout(function() {
+      pointer.style.opacity = '0';
+      setTimeout(function() {
+          pointer.classList.add('hidden');
+      }, 100); // Sesuaikan dengan durasi animasi transition
+  }, 5000); // Durasi penunjuk terlihat (2 detik)
+}
+
+
+document.getElementById('report-form').addEventListener('submit', function(event) {
   event.preventDefault();
 
-  const message = messageInput.value;
-  const email = emailInput.value;
+  // Ambil nilai dari form
+  var message = document.getElementById('message').value;
+  var email = document.getElementById('email').value;
 
-  if (message === '' || email === '') {
-      alert('Please fill in all required fields.');
-      return;
-  }
-
-  sendEmail(message, email); // Memanggil fungsi untuk mengirim email
-
-  console.log('Sending report...');
-  console.log('Message:', message);
-  console.log('Email:', email);
-
-  successMessage.classList.remove('hidden');
-  messageInput.value = '';
-  emailInput.value = '';
-
-  setTimeout(() => {
-      successMessage.classList.add('hidden');
-  }, 3000);
+  // Kirim email menggunakan EmailJS
+  emailjs.send("service_rymk9wk", "template_0hmqrv4", {
+      message: message,
+      email: email,
+  })
+  .then(function(response) {
+     console.log('SUCCESS!', response.status, response.text);
+     document.getElementById('message-sent').classList.remove('hidden');
+  }, function(error) {
+     console.log('FAILED...', error);
+  });
 });
 
 

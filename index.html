@@ -10,8 +10,12 @@
     <link rel="stylesheet" href="style.css">
     <title>Superstore</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init('-6X6OWpjxa3I0DrPb');
+    })();
+    </script>
 </head>
 
 <body>
@@ -32,7 +36,7 @@
             </div>
 
             <div class="sidebar" id="sidebar">
-                <a href="#Dashboard" class="active">
+                <a href="#" class="active">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
@@ -55,10 +59,13 @@
                         groups
                     </span>
                     <h3>Contribute</h3>
+                </a>
+                <a href="#banner" onclick="showPointer()">
+                    <span class="material-symbols-outlined" id="About">
+                        info
+                    </span>
+                    <h3>About</h3>
                 </a>         
-                
-                
-                
                 <a href="#laporkan">
                     <span class="material-icons-sharp">
                         report_gmailerrorred
@@ -207,83 +214,88 @@
             </div>
             <div class="insights">
                 <div class="searches">
-                  <div class="status">
-                    <div class="info">
-                      <h3>
-                        Texas experienced a surge in orders and sales from 2014-2017, reaching a peak in 2017.
-                    </h3>
-                      <h1 id="Card-4"></h1>
+                    <div class="status">
+                        <div class="info">
+                            <h3>
+                                Texas experienced a surge in orders and sales from 2014-2017, reaching a peak in 2017.
+                            </h3>
+                            <h1 id="Card-4"></h1>
+                        </div>
+                        <span class="material-symbols-outlined" id="Order">
+                            lightbulb
+                        </span>
                     </div>
-                    <span class="material-symbols-outlined" id="Order">
-                      lightbulb
-                    </span>
-                  </div>
                 </div>
                 <div class="searches">
-                  <div class="status">
-                    <div class="info">
-                      <h3>
-                        Texas sales dipped in 2014-2015, rebounded in 2016, and grew slightly in 2017. Tech sales peaked in 2015, furniture sales rose steadily.
-                    </h3>
-                      <h1 id="Card-4"></h1>
+                    <div class="status">
+                        <div class="info">
+                            <h3>
+                                Texas sales dipped in 2014-2015, rebounded in 2016, and grew slightly in 2017. Tech sales peaked in 2015, furniture sales rose steadily.
+                            </h3>
+                            <h1 id="Card-4"></h1>
+                        </div>
+                        <span class="material-symbols-outlined" id="Order">
+                            lightbulb
+                        </span>
                     </div>
-                    <span class="material-symbols-outlined" id="Order">
-                      lightbulb
-                    </span>
-                  </div>
                 </div>
-                <div class="searches hidden">  <div class="status">
-                    <div class="info">
-                      <h3>
-                        
-                        Technology was profitable in 2014-2017, furniture was up and down, office supplies plummeted in 2016-2017.  
-                    </h3>
-                      <h1 id="Card-4"></h1>
+                <div class="searches hidden">  
+                    <div class="status">
+                        <div class="info">
+                            <h3>   
+                                Technology was profitable in 2014-2017, furniture was up and down, office supplies plummeted in 2016-2017.  
+                            </h3>
+                            <h1 id="Card-4"></h1>
+                        </div>
+                        <span class="material-symbols-outlined" id="Order">
+                            lightbulb
+                        </span>
                     </div>
-                    <span class="material-symbols-outlined" id="Order">
-                      lightbulb
-                    </span>
-                  </div>
                 </div>
-                <div class="searches hidden">  <div class="status">
-                    <div class="info">
-                      <h3>Texas experienced losses (negative profit) consistently for 4 consecutive years from 2014 to 2017.
-                    </h3>
-                      <h1 id="Card-4"></h1>
+                <div class="searches hidden">  
+                    <div class="status">
+                        <div class="info">
+                            <h3>
+                                Texas experienced losses (negative profit) consistently for 4 consecutive years from 2014 to 2017.
+                            </h3>
+                            <h1 id="Card-4"></h1>
+                        </div>
+                        <span class="material-symbols-outlined" id="Order">
+                            lightbulb
+                        </span>
                     </div>
-                    <span class="material-symbols-outlined" id="Order">
-                      lightbulb
-                    </span>
-                  </div>
                 </div>
-                <div class="searches hidden">  <div class="status">
-                    <div class="info">
-                      <h3>
-                        Biggest loss in 2014: $58,514,576, the highest across all states and years.
-                    </h3>
-                      <h1 id="Card-4"></h1>
+                <div class="searches hidden">  
+                    <div class="status">
+                        <div class="info">
+                            <h3>
+                                Biggest loss in 2014: $58,514,576, the highest across all states and years.
+                            </h3>
+                            <h1 id="Card-4"></h1>
+                        </div>
+                        <span class="material-symbols-outlined" id="Order">
+                            lightbulb
+                        </span>
                     </div>
-                    <span class="material-symbols-outlined" id="Order">
-                      lightbulb
-                    </span>
-                  </div>
                 </div>
-                <div class="searches hidden">  <div class="status">
-                    <div class="info">
-                      <h3>Texas suffered notable losses in subsequent years despite a gradual decline, totaling:
-                        - 2015: $27,030,143
-                        - 2016: $43,631,005
-                        - 2017: $31,874,895
-                     </h3>
-                      <h1 id="Card-4"></h1>
+                <div class="searches hidden">  
+                    <div class="status">
+                        <div class="info">
+                            <h3>
+                                Texas suffered notable losses in subsequent years despite a gradual decline, totaling:
+                                - 2015: $27,030,143
+                                - 2016: $43,631,005
+                                - 2017: $31,874,895
+                            </h3>
+                            <h1 id="Card-4"></h1>
+                        </div>
+                        <span class="material-symbols-outlined" id="Order">
+                            lightbulb
+                        </span>
                     </div>
-                    <span class="material-symbols-outlined" id="Order">
-                      lightbulb
-                    </span>
-                  </div>
                 </div>
-              </div>
-              <a id="show-more-btn">Show All</a>
+            </div>
+            <a id="show-more-btn">Show All</a>
             <!-- Insights End -->
 
             <!-- Recommendations -->
@@ -291,7 +303,7 @@
                 <h2 >Recommendations</h2>
                 <span class="material-symbols-outlined">
                     recommend
-                    </span>
+                </span>
             </div>
             <div class="recommendations">
                 <div class="searches1">
@@ -400,7 +412,7 @@
                     Frontend</p>
                     </div>
                     <div class="profil">
-                        <img src="/images/Wawan.jpg">
+                        <img src="/images/wans.jpg">
                         <h2>Kurniawan</h2>
                         <p>Universitas Khairun<br>
                         Data Cleaner<br>
@@ -460,7 +472,7 @@
             </div>
             <!-- contribute end -->
 
-            <!-- Report End -->
+            <!-- Report -->
             <div class="header-recommendations" id="laporkan">
                 <h2 >Report</h2>
                 <span class="material-icons-sharp">
@@ -520,15 +532,23 @@
                         <img src="/images/Logo-RevoU-5.png">
                     </div>
                 </div>
-
             </div>
             <!-- End of Nav -->
 
 
             <!-- banner -->
-            <div class="banner">
+            <div class="banner" id="banner">
                 <div class="logo">
-                    <img src="images/logo.png">
+                    <span class="material-symbols-outlined" id="infoIcon">
+                        info
+                        <div class="tooltip">About</div>
+                    </span>
+                    <div id="pointer" class="hidden">
+                        <span class="material-symbols-outlined">
+                            double_arrow
+                        </span>
+                    </div>
+                    <img src="images/logo.png" alt="Logo">
                     <h2>Superstore</h2>
                     <p>Data Analytics</p>
                 </div>
@@ -694,7 +714,28 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <!-- About -->
+        <div id="infoModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                
+                <img src="/images/Logo-RevoU-5.png">
+                <h2>Medan Team 16</h2>
+                <p>We are a data analysis team tasked with analyzing a company's data with the aim of solving existing problems. We are currently assigned to analyze a large company, Superstore.</p>
+                
+                <img src="/images/logo.png">
+                <h2>Superstore</h2>
+                <p>Giant Superstore is a leader in the retail industry with a focus on three main categories: office supplies, technology, and furniture. Superstores, now operating in almost all of the United States.</p>
+                <p>Superstore experienced some problems, after our data analyst team analyzed the company's profits.</p>
+                
+                <h2>Problems</h2>
+                <h3>Superstore has a large profit growth every year, but in some areas it still experiences losses</h3>
+                <p>The profit generated by each state in the US, such as California recorded the highest profit, but on the other hand Texas suffered a loss.</p>
+                <p>Texas experienced a significant decline in profitability from 2016 to 2017, in contrast to the general trend in some other states.</p>
+                <h3>That's why we created a dashboard to analyze the situation in Texas.</h3>
+            </div>
         </div>
 
     </div>

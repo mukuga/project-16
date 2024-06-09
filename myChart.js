@@ -31,17 +31,26 @@ function updateChart() {
             });
         }
 
+        // Fungsi untuk mengonversi angka ke format K
+        function formatNumber(value) {
+          if (value >= 1000) {
+              return (value / 1000).toFixed(1) + 'K';
+          }
+          return value;
+        }
+
         // Hitung total profit, sales, quantity, dan order ID
         const totalProfit = filteredData.reduce((acc, item) => acc + item.Profit, 0);
         const totalSales = filteredData.reduce((acc, item) => acc + item.Sales, 0);
         const totalQuantity = filteredData.reduce((acc, item) => acc + item.Quantity, 0);
         const totalOrderIds = [...new Set(filteredData.map(item => item.Order_ID))].length;
 
-        // Update card values
-        document.getElementById('Card-1').textContent = `$${totalProfit.toFixed(2)}`;
-        document.getElementById('Card-2').textContent = `$${totalSales.toFixed(2)}`;
-        document.getElementById('Card-3').textContent = `${totalQuantity}`;
-        document.getElementById('Card-4').textContent = `${totalOrderIds}`;
+        // Update card values dengan format K
+        document.getElementById('Card-1').textContent = `$${formatNumber(totalProfit.toFixed(2))}`;
+        document.getElementById('Card-2').textContent = `$${formatNumber(totalSales.toFixed(2))}`;
+        document.getElementById('Card-3').textContent = `${formatNumber(totalQuantity)}`;
+        document.getElementById('Card-4').textContent = `${formatNumber(totalOrderIds)}`;
+
 
         // Group data by year and calculate total profit per year
         const profitByYear = filteredData.reduce((acc, item) => {
@@ -223,7 +232,7 @@ function updateChart() {
                 y: {
                   beginAtZero: true,
                   ticks: {
-                    color: '#1B9C85' // Mengubah warna tulisan sumbu Y menjadi biru
+                    color: '#1B9C85' 
                   }
                 },
                 x: {
@@ -241,7 +250,7 @@ function updateChart() {
         myChart1 = new Chart(ctr, {
             type: 'bar',
             data: {
-            labels: labels1, // Mengubah labels1 menjadi labels
+            labels: labels1, 
             datasets: [{
                 label: `Quantity by Year (${selectedState} - ${selectedYear || 'All Years'})`,
                 data: values1,
@@ -262,7 +271,7 @@ function updateChart() {
                 y: {
                   beginAtZero: true,
                   ticks: {
-                    color: 'rgb(54, 162, 235)' // Mengubah warna tulisan sumbu Y menjadi biru
+                    color: 'rgb(54, 162, 235)' 
                   }
                 },
                 x: {
@@ -271,7 +280,7 @@ function updateChart() {
                   },
                 }
             },
-            maintainAspectRatio: false // Menonaktifkan aspek rasio untuk penyesuaian ukuran chart
+            maintainAspectRatio: false 
             }
         });
 
@@ -301,7 +310,7 @@ function updateChart() {
                   y: {
                     beginAtZero: true,
                     ticks: {
-                      color: 'rgba(255, 99, 132, 1)' // Mengubah warna tulisan sumbu Y menjadi biru
+                      color: 'rgba(255, 99, 132, 1)' 
                     }
                   },
                   x: {
@@ -310,7 +319,7 @@ function updateChart() {
                     },
                   }
               },
-            maintainAspectRatio: false // Menonaktifkan aspek rasio untuk penyesuaian ukuran chart
+            maintainAspectRatio: false 
             }
         });
 
@@ -350,7 +359,7 @@ function updateChart() {
               y: {
                 beginAtZero: true,
                 ticks: {
-                  color: '#1B9C85' // Mengubah warna tulisan sumbu Y menjadi biru
+                  color: '#1B9C85' 
                 },
               },
               x: {
@@ -359,7 +368,7 @@ function updateChart() {
                 },
               }
             },
-            maintainAspectRatio: false // Menonaktifkan aspek rasio untuk penyesuaian ukuran chart
+            maintainAspectRatio: false 
           }
         });
 
@@ -403,11 +412,11 @@ function updateChart() {
               y: {
                 beginAtZero: true,
                 ticks: {
-                  color: 'rgba(255, 99, 132, 1)' // Mengubah warna tulisan sumbu Y menjadi biru
+                  color: 'rgba(255, 99, 132, 1)' 
                 },
               }
             },
-            maintainAspectRatio: false // Menonaktifkan aspek rasio untuk penyesuaian ukuran chart
+            maintainAspectRatio: false 
           }
         });
 
@@ -437,7 +446,7 @@ function updateChart() {
               y: {
                 beginAtZero: true,
                 ticks: {
-                  color: '#1B9C85' // Mengubah warna tulisan sumbu Y menjadi biru
+                  color: '#1B9C85' 
                 },
               }
             },
@@ -457,7 +466,7 @@ function updateChart() {
               },
               
             },
-            maintainAspectRatio: false // Menonaktifkan aspek rasio untuk penyesuaian ukuran chart
+            maintainAspectRatio: false 
           }
         });
 
@@ -481,95 +490,92 @@ function updateChart() {
               y: {
                 beginAtZero: true,
                 ticks: {
-                  color: '#1B9C85' // Mengubah warna tulisan sumbu Y menjadi biru
+                  color: '#1B9C85' 
                 },
               },
               x: {
                 ticks: {
-                  color: '#1B9C85' // Mengubah warna tulisan label sumbu X menjadi ungu
+                  color: '#1B9C85' 
                 }
               }
             },
             legend: {
-              position: 'right' // Mengatur posisi legend di sebelah kanan
+              position: 'right' 
               
             },
-            maintainAspectRatio: false // Menonaktifkan aspek rasio untuk penyesuaian ukuran chart
+            maintainAspectRatio: false 
           },
       });
       
-
+      // Buat chart baru untuk profit by discount
       const ctxProfitDiscount = document.getElementById('myChart-6').getContext('2d');
       myChartProfitDiscount = new Chart(ctxProfitDiscount, {
-        type: 'line',
-        data: {
-          labels: years3,
-          datasets: [
-            {
-              label: 'Profit',
-              data: profitData,
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              borderColor: 'rgb(75, 192, 192)',
-              borderWidth: 1,
-              fill: false,
-              yAxisID: 'y-axis-profit' // Assign yAxisID for profit
-            },
-            {
-              label: 'Discount',
-              data: discountData,
-              borderColor: 'rgb(153, 102, 255)',
-              backgroundColor: 'rgba(153, 102, 255, 0.2)',
-              borderWidth: 1,
-              fill: false,
-              yAxisID: 'y-axis-discount' // Assign yAxisID for discount
-            }
-          ]
-        },
-        options: {
-          plugins: {
-            title: {
-              display: true,
-              text: 'Profit by discount',
-              color: '#1B9C85'
-            }
+          type: 'line',
+          data: {
+              labels: years3,
+              datasets: [{
+                      label: 'Profit',
+                      data: profitData,
+                      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                      borderColor: 'rgb(75, 192, 192)',
+                      borderWidth: 1,
+                      fill: false,
+                      yAxisID: 'y-axis-profit'
+                  },
+                  {
+                      label: 'Discount',
+                      data: discountData,
+                      borderColor: 'rgb(153, 102, 255)',
+                      backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                      borderWidth: 1,
+                      fill: false,
+                      yAxisID: 'y-axis-discount'
+                  }
+              ]
           },
-          scales: {
-            yAxes: [
-              {
-                id: 'y-axis-profit',
-                position: 'left',
-                title: {
-                  display: true,
-                  text: 'Profit',
-                  color: 'rgb(153, 102, 255)' // Ubah warna tulisan judul sumbu Y menjadi ungu
-                },
-                ticks: {
-                  beginAtZero: true
-                }
+          options: {
+              plugins: {
+                  title: {
+                      display: true,
+                      text: 'Profit by discount',
+                      color: '#1B9C85'
+                  }
               },
-              {
-                id: 'y-axis-discount',
-                position: 'right',
-                title: {
-                  display: true,
-                  text: 'Discount',
-                  color: '#1B9C85' // Ubah warna tulisan judul sumbu Y menjadi hijau tua
-                },
-                ticks: {
-                  beginAtZero: true
-                }
-              }
-            ],
-            x: {
-              ticks: {
-                color: '#1B9C85' // Mengubah warna tulisan label sumbu X menjadi ungu
-              }
-            }
-          },
-          maintainAspectRatio: false // Menonaktifkan aspek rasio untuk penyesuaian ukuran chart
-        }
-      });
-      
+              scales: {
+                  y: [{
+                          id: 'y-axis-profit',
+                          position: 'left',
+                          title: {
+                              display: true,
+                              text: 'Profit',
+                              color: 'rgb(75, 192, 192)'
+                          },
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      },
+                      {
+                          id: 'y-axis-discount',
+                          position: 'right',
+                          title: {
+                              display: true,
+                              text: 'Discount',
+                              color: 'rgb(153, 102, 255)'
+                          },
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }
+                  ],
+                  x: {
+                      ticks: {
+                          color: '#1B9C85'
+                      }
+                  }
+              },
+              maintainAspectRatio: false
+          }
+        });
 
     });
 }

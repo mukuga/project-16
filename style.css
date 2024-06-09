@@ -113,13 +113,7 @@ b{
     color: var(--color-warning);
 }
 
-.container{
-    display: grid;
-    width: 96%;
-    margin: 0 auto;
-    gap: 1.8rem;
-    grid-template-columns: 12rem auto 23rem;
-}
+/* animasi */
 
 @keyframes slideInLeft {
     from {
@@ -176,12 +170,32 @@ b{
     }
 }
 
-aside{
-    height: 100vh;
+@keyframes majuMundur {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
-aside .sidebar a h3 span{
-    font-size: 0.1px;
+/* animasi - end */
+
+.container{
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 12rem auto 23rem;
+}
+
+/* sidebar */
+
+aside{
+    height: 100vh;
 }
 
 aside .toggle{
@@ -238,6 +252,10 @@ aside .sidebar a{
     transition: all 0.3s ease;
 }
 
+aside .sidebar a h3 span{
+    font-size: 0.1px;
+}
+
 aside .sidebar a span{
     font-size: 1.6rem;
     transition: all 0.3s ease;
@@ -276,9 +294,15 @@ aside .sidebar a:hover span{
     margin-left: 0.6rem;
 }
 
+/* sidebar - end */
+
+/* Content */
+
 main{
     margin-top: 1.4rem;
 }
+
+/* content awal */
 
 main a{
     display: flex;
@@ -308,8 +332,6 @@ main .analyse > div{
     transition: all 0.3s ease;
     animation: slideInup 1.5s forwards;
 }
-
-
 
 main .analyse > div:hover{
     box-shadow: none;
@@ -347,9 +369,11 @@ main .analyse h1{
     font-size: 1.2rem;
 }
 
+/* content awal-end */
+
 /* chart */
 
-main .analyze, main .analyze1, main .analyze2{
+main .analyze, main .analyze1, main .analyze2, main .analyze3 {
     display: none;
 }
 
@@ -360,18 +384,17 @@ main .analyze.show, main .analyze1.show, main .analyze2.show {
     animation: slideInup 1.5s forwards;
 }
 
-main .analyze3 {
-    display: none;
-}
-
 .analyze3.show {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 0rem;
+    grid-template-columns: 1fr;
+    gap: 0;
     animation: slideInup 1.5s forwards;
 }
 
-main .analyze > div{
+main .analyze > div, 
+main .analyze1 > div, 
+main .analyze2 > div, 
+main .analyze3 > div {
     background-color: var(--color-white);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
@@ -379,38 +402,48 @@ main .analyze > div{
     box-shadow: var(--box-shadow);
     cursor: pointer;
     transition: all 0.3s ease;
+    box-sizing: border-box;
+    width: 100%;
 }
 
-main .analyze > div:hover{
+main .analyze > div:hover,
+main .analyze1 > div:hover,
+main .analyze2 > div:hover,
+main .analyze3 > div:hover {
     box-shadow: none;
 }
 
-main .analyze > div .status{
+main .analyze > div .status, 
+main .analyze1 > div .status, 
+main .analyze2 > div .status {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 250px;
+    width: 100%;
+}
+
+main .analyze3 > div .status {
+    justify-content: center;
+    height: 350px;
+    width: 100%;
 }
 
 select {
     font-family: Arial, sans-serif;
     font-size: 14px;
-    padding: 10px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: var(--border-radius-2);
     background-color: var(--color-white);
     color: var(--color-dark);
     cursor: pointer;
-    border-radius: var(--border-radius-2);
     margin-top: 1rem;
     box-shadow: var(--box-shadow);
-    gap: 1rem;
     animation: slideInup 1.5s forwards;
 }
 
 select:hover {
     box-shadow: none;
-    background-color: var(--color-white);
     border-style: none;
 }
 
@@ -418,81 +451,8 @@ option {
     background-color: var(--color-white);
 }
 
-select {
-    border-style: none;
-}
-  
 option:hover {
     background-color: var(--color-white);
-}
-
-/* ---- */
-
-main .analyze1 > div{
-    background-color: var(--color-white);
-    padding: var(--card-padding);
-    border-radius: var(--card-border-radius);
-    margin-top: 1rem;
-    box-shadow: var(--box-shadow);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-main .analyze1 > div:hover{
-    box-shadow: none;
-}
-
-main .analyze1 > div .status{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 250px;
-}
-
-/* ---- */
-
-main .analyze2 > div{
-    background-color: var(--color-white);
-    padding: var(--card-padding);
-    border-radius: var(--card-border-radius);
-    margin-top: 1rem;
-    box-shadow: var(--box-shadow);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-main .analyze2 > div:hover{
-    box-shadow: none;
-}
-
-main .analyze2 > div .status{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 250px;
-}
-
-/* ---- */
-
-main .analyze3 > div{
-    background-color: var(--color-white);
-    padding: var(--card-padding);
-    border-radius: var(--card-border-radius);
-    margin-top: 1rem;
-    box-shadow: var(--box-shadow);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-main .analyze3 > div:hover{
-    box-shadow: none;
-}
-
-main .analyze3 > div .status{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 350px;
 }
 
 /* Chart end */
@@ -504,7 +464,7 @@ main .header-insight {
     justify-content: left;
     align-items: center;
     gap: 1rem;
-    margin-top: 1rem;
+    padding-top: 1rem;
     animation: slideInUp 1.5s forwards;
 }
 
@@ -553,7 +513,6 @@ main .insights > div .status span {
 
 /* insight end */
 
-
 /* recommendations*/
 
 main .header-recommendations {
@@ -561,7 +520,7 @@ main .header-recommendations {
     align-items: center;
     justify-content: left;
     gap: 1rem;
-    margin-top: 1rem;
+    padding-top: 1rem;
     animation: slideInUp 1.5s forwards;
 }
 
@@ -603,7 +562,6 @@ main .recommendations > div .status span {
   
 /* recommendations end */
 
-
 /* Report */
 
 main .header-reports {
@@ -611,13 +569,13 @@ main .header-reports {
     align-items: center;
     justify-content: left;
     gap: 1rem;
-    margin-top: 1rem;
+    padding-top: 1rem;
     animation: slideInUp 1.5s forwards;
 }
 
 .report {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.6rem;
     margin-bottom: 2rem;
 }
@@ -641,11 +599,12 @@ main .header-reports {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 400px;
+    height: auto;
 }
 
 .form-group {
     margin-bottom: 15px;
+    width: 100%;
 }
 
 label {
@@ -659,6 +618,7 @@ input {
     padding: 8px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    border-radius: 4px;
 }
 
 button {
@@ -667,6 +627,11 @@ button {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #45a049;
 }
 
 .success-message {
@@ -681,11 +646,10 @@ button {
 
 /* Report end */
 
-
 /* contribute */
 
 main .contribute{
-    margin-top: 1.3rem;
+    padding-top: 1.3rem;
     margin-bottom: 1.8rem;
     animation: slideInUp 1.5s forwards;
 }
@@ -729,7 +693,14 @@ main .contribute .profil-list .profil img{
     border-radius: 50%;
 }
 
+main .contribute .profil-list .profil h2,
+main .contribute .profil-list .profil p {
+    margin: 0.5rem 0;
+}
+
 /* contribute end */
+
+/* content - end */
 
 
 /* right section */
@@ -767,6 +738,7 @@ main .contribute .profil-list .profil img{
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s ease;
 }
 
 .right-section .dark-mode span.active{
@@ -778,7 +750,7 @@ main .contribute .profil-list .profil img{
 .right-section .nav .profile{
     display: flex;
     gap: 2rem;
-    text-align: right;
+    align-items: center;
 }
 
 .right-section .nav .profile .profile-photo{
@@ -808,6 +780,16 @@ main .contribute .profil-list .profil img{
     box-shadow: none;
 }
 
+.right-section .banner .logo span {
+    position: absolute;
+    bottom: 18.4%;
+    left: 25%;
+}
+
+.right-section .banner .logo span:hover  {
+    color: var(--color-primary)
+}
+
 .right-section .banner img{
     width: 11rem;
     height: auto;
@@ -819,11 +801,120 @@ main .contribute .profil-list .profil img{
     margin-bottom: 0.2rem;
 }
 
-/* banner end */
+.tooltip {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; 
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.7rem;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.right-section .banner .logo span:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* about */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modal .modal-content img {
+    width: 6rem;
+    height: auto;
+}
+
+.modal .modal-content span {
+    position: absolute;
+    right: 5%;
+    top: 5%
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* about - end */
+
+#pointer {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    transition: opacity 1s ease-in-out;
+    left: 12%;
+    bottom: 16.5%;
+    z-index: 100;
+    animation: majuMundur 1s infinite;
+}
+
+.right-section .banner .logo #pointer span {
+    color: #ff0000;
+    
+}
+
+.hidden {
+    display: none;
+}
 
 
-/* suprot */
-
+/* banner-support */
 .right-section .banner-support{
     margin-top: 2rem;
 }
@@ -894,11 +985,6 @@ main .contribute .profil-list .profil img{
     height: auto;
     border-radius: var(--border-radius-1);
 }
-
-.right-section .banner-support .notification.deactive .icon{
-    border-radius: var(--border-radius-1);
-}
-
 
 
 @media screen and (max-width: 1200px) {
@@ -1038,6 +1124,36 @@ main .contribute .profil-list .profil img{
 
     main .contribute .profil-list .profil{
         flex-basis: 35%;
+    }
+
+    main #Insight {
+        padding-top: 6rem;
+    }
+
+    main #rekomendasi {
+        padding-top: 6rem;
+    }
+
+    main #kontribusi {
+        padding-top: 6rem;
+    }
+
+    main #laporkan {
+        padding-top: 6rem;
+    }
+
+    .right-section #banner {
+        padding: 4rem;
+    }
+
+    .right-section .banner .logo span {
+        left: 28%;
+        top: 69%;
+    }
+
+    #pointer {
+        left: 14%;
+        top: 62.5%;
     }
 
     .right-section{
