@@ -80,3 +80,8 @@ addListener(select('#report-form'), 'submit', event => {
     })
     .catch(error => console.log('FAILED...', error));
 });
+
+window.addEventListener('load', function() {
+    var loadingOverlay = document.querySelector('.loading-overlay');
+    loadingOverlay.style.display = 'none';
+});
