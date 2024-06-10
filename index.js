@@ -69,16 +69,42 @@ const showPointer = () => {
     }, 5000);
 };
 
-addListener(select('#report-form'), 'submit', event => {
+addListener(select('#report-form'), 'submit', async event => {
     event.preventDefault();
-    const message = select('#message').value;
-    const email = select('#email').value;
-    emailjs.send("service_rymk9wk", "template_0hmqrv4", { message: message, email: email })
-    .then(response => {
+    const form = select('#report-form');
+    const messageInput = select('#message');
+    const emailInput = select('#email');
+    const messageSent = select('#message-sent');
+
+    const { value: message } = messageInput;
+    const { value: email } = emailInput;
+
+    if (!message.trim() || !email.trim()) {
+        return alert('Please fill in all the fields before submitting!');
+    }
+
+    const loadingIndicator = document.createElement('span');
+    loadingIndicator.textContent = 'Wait...';
+    form.appendChild(loadingIndicator);
+
+    try {
+        const response = await emailjs.send("service_rymk9wk", "template_0hmqrv4", { message, email });
         console.log('SUCCESS!', response.status, response.text);
-        select('#message-sent').classList.remove('hidden');
-    })
-    .catch(error => console.log('FAILED...', error));
+
+        messageInput.value = '';
+        emailInput.value = '';
+        messageSent.classList.remove('hidden');
+
+        form.removeChild(loadingIndicator);
+
+        setTimeout(() => {
+            messageSent.classList.add('hidden');
+        }, 3000);
+    } catch (error) {
+        console.log('FAILED...', error);
+
+        form.removeChild(loadingIndicator);
+    }
 });
 
 window.addEventListener('load', function() {
