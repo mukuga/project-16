@@ -1,5 +1,4 @@
 # Dashboard - Web Project
----
 
 ## Description
 Dashboard-WebProject is a web application for visualizing superstore data. The project uses modern web technologies to display data in an interactive and easy-to-understand manner.
